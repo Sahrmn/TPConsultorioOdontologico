@@ -1,0 +1,47 @@
+$first-detail-color: #488aff;
+$second-detail-color:#19bdcc;
+$third-detail-color: #036169;
+$error-color: #d22c0e;
+
+body{
+	background-image: url('./assets/img/background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: 'Numans', sans-serif;
+}
+
+.error-alert{
+    text-align: center;
+    > div{
+        background-color: $error-color !important;
+    }
+}
+
+.success-alert{
+    text-align: center;
+    > div{
+        background-color: $first-detail-color !important;
+    }
+}
+
+.confirm-alert{
+    > div{
+      background-color: $third-detail-color!important;
+      text-align: center;
+      font-weight: bold;
+    }
+    .alert-message{
+        color: #ffffff;
+        background-color: $third-detail-color;
+        font-size: 1.3em;
+        padding: 1em;
+    }
+    .alert-head{
+        background-color: $first-detail-color!important;
+        color: #ffffff !important;
+    }
+    .alert-button{
+        background-color: $third-detail-color !important;
+        color: #ffffff;
+    }
+  }
