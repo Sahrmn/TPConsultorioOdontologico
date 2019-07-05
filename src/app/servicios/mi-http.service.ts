@@ -42,7 +42,7 @@ export class MiHttpService<T> {
   public httpPostP( url: string, objeto: any )
   {
     return this.http
-    .post( this.urlBase + url , objeto )
+    .post( this.urlBase + url , objeto, {responseType:'text'})
     .subscribe( data => {
       console.log( data );
       return data;

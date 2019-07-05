@@ -1,0 +1,107 @@
+<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key" type="text/javascript"></script>
+
+<div class="container">
+		
+
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Alta de Usuario</h3>
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+					    <label for="exampleFormControlSelect1">Tipo de usuario</label>
+					    <select [(ngModel)]="tipo" name="tipo" class="form-control" id="exampleFormControlSelect1">
+					      <option value="cliente">Cliente</option>
+					      <option value="especialista">Especialista</option>
+					      <option value="recepcionista">Recepcionista</option>
+					    </select>
+					</div>
+					
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input [(ngModel)]="nombre" name="nombre" type="text" class="form-control" placeholder="nombre">
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input [(ngModel)]="apellido" name="apellido" type="text" class="form-control" placeholder="apellido">
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input [(ngModel)]="dni" name="dni" type="number" class="form-control" placeholder="dni">
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="username">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="password">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input [(ngModel)]="password2" name="password2" type="password" class="form-control" placeholder="repita el password">
+					</div>
+
+					<div *ngIf="tipo == 'especialista'" class="form-group">
+					    <label for="exampleFormControlSelect1">Especialidad</label>
+					    <select [(ngModel)]="especialidad" name="especialidad" class="form-control" id="especialidadSelect">
+					      <option *ngFor="let especialidad of especialidades" value="{{especialidad.id}}">{{especialidad.nombre}}</option>
+					    </select>
+					</div>
+
+					<div *ngIf="tipo == 'especialista'" class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input [(ngModel)]="matricula" name="matricula" type="text" class="form-control" placeholder="matricula">
+					</div>
+
+					<div *ngIf="tipo == 'especialista'" class="input-group form-group">
+
+
+
+					</div>
+
+					<div *ngIf="tipo == 'cliente'" class="form-group">
+					    <label for="exampleFormControlFile1">Seleccione una foto de perfil...</label>
+					    <input (change)="onFileChange($event)" type="file" class="form-control-file" id="exampleFormControlFile1" accept="image/*" >
+					</div>
+
+					<div class="form-group">
+						<input (click)="alta()" type="submit" value="Dar de alta" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="alert alert-danger page-alert" id="alert-1" data-dismiss="alert-1">
+			        <button (click)="cerrarAlert()" type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			        {{text}}
+				</div>	
+
+				<div class="alert alert-success page-alert" id="alert-2" data-dismiss="alert-1" role="alert">
+				  {{text2}}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

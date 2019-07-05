@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../usuario.service';
+import { UsuarioService } from '../servicios/usuario.service';
 import { Router } from '@angular/router';
 
 export interface data{

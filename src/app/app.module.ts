@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 
 import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { AltaUsuarioComponent } from './alta-usuario/alta-usuario.component';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*
 *https://github.com/valor-software/ng2-file-upload
@@ -21,6 +23,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    AltaUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     HttpClientModule,
     RouterModule,
     RecaptchaModule.forRoot(),
+    //BrowserAnimationsModule
   ],
   providers: [
     {
@@ -38,4 +42,5 @@ import { RecaptchaModule } from 'ng-recaptcha';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

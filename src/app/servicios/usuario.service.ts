@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from './usuario';
+import { Usuario } from '../usuario';
 import { MiHttpService } from './mi-http.service'; 
 import { Observable } from 'rxjs';
 import { map, tap, catchError, timeInterval } from 'rxjs/operators';
