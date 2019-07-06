@@ -10,16 +10,17 @@ export class ClienteService {
 
   constructor(private miHttp: MiHttpService<Cliente>) { }
 
-  alta(foto, nombre, apellido, dni, usuario, clave){
-  	let data = {
-  		'foto': foto.name,
-  		'nombre': nombre,
-  		'apellido': apellido,
-  		'dni': dni,
-  		'nombre_usuario': usuario,
-  		'clave': clave
-  	};
-    return this.miHttp.httpPostPSinSubscripcion("clientes/alta/", data);
+  alta(file, nombre, apellido, dni, usuario, clave){
+    let formData: FormData = new FormData();
+    formData.append('foto', file);
+    formData.append('nombre', nombre);
+    formData.append('apellido', apellido);
+    formData.append('dni', dni);
+    formData.append('nombre_usuario', usuario);
+    formData.append('clave', clave);
+
+    console.log(formData);
+    return this.miHttp.httpPostPSinSubscripcion("clientes/alta/", formData);
   }
 
 

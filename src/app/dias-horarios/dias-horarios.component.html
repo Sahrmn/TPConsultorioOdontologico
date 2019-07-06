@@ -1,0 +1,22 @@
+  
+<label for="exampleFormControlSelect1">Día</label>
+<select [(ngModel)]="dia" name="dia" class="form-control" id="dia">
+  <option value="lunes">Lunes</option>
+  <option value="martes">Martes</option>
+  <option value="miercoles">Miercoles</option>
+  <option value="jueves">Jueves</option>
+  <option value="viernes">Viernes</option>
+  <option value="sabado">Sabado</option>
+</select>
+
+<div class="ui-g-12 ui-md-4">
+    <label class="w100" for="hora1">Inicio</label>
+    <p-calendar name="horaIni" id="hora1" [(ngModel)]="horaIni" [timeOnly]="true"></p-calendar>
+</div>
+
+<div class="ui-g-12 ui-md-4">
+    <label class="w100" for="horaFin">Fin</label>
+    <p-calendar name="horaFin" id="horaFin" [(ngModel)]="horaFin" [timeOnly]="true"></p-calendar>
+</div>
+
+<input (click)="agregar()" type="" value="Agregar Horario" class="btn float-right login_btn">

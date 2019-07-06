@@ -73,9 +73,29 @@
 						<input [(ngModel)]="matricula" name="matricula" type="text" class="form-control" placeholder="matricula">
 					</div>
 
-					<div *ngIf="tipo == 'especialista'" class="input-group form-group">
+					<div *ngIf="tipo == 'especialista'" class="form-group">
+						
+						<table *ngIf="horario.length > 0" class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th scope="col">Día</th>
+						      <th scope="col">Hora Inicio</th>
+						      <th scope="col">Hora Fin</th>
+						      <th scope="col"> </th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr *ngFor="let item of horario">
+						      <!--th scope="row">1</th-->
+						      <td>{{item.dia}}</td>
+						      <td>{{item.hora_inicio}}</td>
+						      <td>{{item.hora_fin}}</td>
+						      <td><button (click)="eliminarDeLista(item)" type="button" class="btn btn-danger">X</button></td>
+						    </tr>
+						  </tbody>
+						</table>
 
-
+					    <app-dias-horarios (myOutPut)="nuevoDia($event)"></app-dias-horarios>
 
 					</div>
 

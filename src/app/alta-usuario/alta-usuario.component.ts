@@ -4,9 +4,17 @@ import { EspecialidadService } from '../servicios/especialidad.service';
 import { Especialidad } from '../especialidad';
 import { ClienteService } from '../servicios/cliente.service';
 import { RecepcionistaService } from '../servicios/recepcionista.service';
+import {CalendarModule} from 'primeng/calendar';
+import { EspecialistaService } from '../servicios/especialista.service';
 
 interface Dato{
 	respuesta: string
+}
+
+interface Horario{
+  dia: string,
+  hora_inicio: number,
+  hora_fin: number
 }
 
 @Component({
@@ -27,15 +35,16 @@ export class AltaUsuarioComponent implements OnInit {
   text: string;
   text2: string;
   especialidades: Especialidad[] = [];
-  especialidad: string = '1';
+  especialidad: string;
   matricula: string;
+  horario: Horario[] = [];
 
-  constructor(private espService: EspecialidadService, private clienteService: ClienteService, private recepService: RecepcionistaService) {
+  constructor(private espService: EspecialidadService, private clienteService: ClienteService, private recepService: RecepcionistaService, private especialistaService: EspecialistaService) {
   	//traigo especialidades
   	this.espService.listar().subscribe(lista =>{
   		this.especialidades = lista;
-  		//console.log(this.especialidades);
-
+  		console.log(this.especialidades);
+      this.especialidad = this.especialidades[0].id;
   	});
   }
 
@@ -61,11 +70,10 @@ export class AltaUsuarioComponent implements OnInit {
   		}
 
   		if(this.tipo == 'especialista'){
-  			console.log("en alta especialista");
-  			/*this.recepService.alta(this.nombre, this.apellido, this.dni, this.username, this.password).subscribe((data:Dato) =>{
+  			this.especialistaService.alta(this.nombre, this.apellido, this.dni, this.username, this.password, this.matricula, this.especialidad, this.horario).subscribe((data:Dato) =>{
 			    	console.log(data);
 			    	this.mostrarAlertOk(data.respuesta);
-			    });*/
+			    });
   		}
   	}
   }
@@ -127,6 +135,32 @@ export class AltaUsuarioComponent implements OnInit {
   	}
   	return retorno;
 
+  }
+
+  nuevoDia(e){
+    console.log(e);
+    //console.log(e.horaIni.getHours());
+    //console.log(e.horaIni.getMinutes());
+
+    let hora1 = e.horaIni.getHours();
+    let hora2 = e.horaFin.getHours();
+
+    let nuevoHorario: Horario = {
+      'dia': e.dia,
+      'hora_inicio': hora1,
+      'hora_fin': hora2
+    }
+
+    this.horario.push(nuevoHorario);
+
+  }
+
+  eliminarDeLista(item){
+    for (var i = 0; i < this.horario.length; ++i) {
+      if(this.horario[i] == item){
+        this.horario.splice(i, 1);
+      } 
+    }
   }
 
   onFileChange(event){

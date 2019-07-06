@@ -12,7 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AltaUsuarioComponent } from './alta-usuario/alta-usuario.component';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
+import { DiasHorariosComponent } from './dias-horarios/dias-horarios.component';
 
 /*
 *https://github.com/valor-software/ng2-file-upload
@@ -24,6 +26,7 @@ import { AltaUsuarioComponent } from './alta-usuario/alta-usuario.component';
     LoginComponent,
     HomeComponent,
     AltaUsuarioComponent,
+    DiasHorariosComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +34,9 @@ import { AltaUsuarioComponent } from './alta-usuario/alta-usuario.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
+    CalendarModule,
     RecaptchaModule.forRoot(),
-    //BrowserAnimationsModule
+    BrowserAnimationsModule
   ],
   providers: [
     {
